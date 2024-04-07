@@ -10,3 +10,7 @@ from src.mcq_generator.logger import logging
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SequentialChain
 import PyPDF2
+
+load_dotenv()
+
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
