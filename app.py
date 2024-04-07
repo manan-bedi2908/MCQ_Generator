@@ -37,3 +37,19 @@ with st.form("user_inputs"):
             except Exception as e:
                 traceback.print_exception(type(e), e, e.__traceback__)
                 st.error("Error!")
+
+            else:
+                if isinstance(response, dict):
+                    quiz = response.get("quiz", None)
+                    if quiz is not None:
+                        table_data = get_table_data(quiz)
+                        if table_data is not None:
+                            df = pd.DataFrame(table_data)
+                            df.index = df.index + 1
+                            st.table(df)
+                            st.text_area(label="Review", 
+                                         value=response['review'])
+                        else:
+                            st.error("Error in the Table Data!!")
+                else:
+                    st.write(response)
