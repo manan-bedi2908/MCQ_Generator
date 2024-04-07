@@ -20,3 +20,20 @@ with st.form("user_inputs"):
     tone = st.text_input("Complexity Level of Questions",
                          max_chars=20, placeholder="Simple")
     button = st.form_submit_button("Create MCQs")
+
+    if button and uploaded_file is not None and mcq_count and subject and tone:
+        with st.spinner("Loading..."):
+            try:
+                text = read_file(uploaded_file)
+                response=generate_evaluate_chain(
+                    {
+                        "text": text,
+                        "number": mcq_count,
+                        "subject":subject,
+                        "tone": tone,
+                        "response_json": json.dumps(RESPONSE_JSON)
+                    }
+                )
+            except Exception as e:
+                traceback.print_exception(type(e), e, e.__traceback__)
+                st.error("Error!")
