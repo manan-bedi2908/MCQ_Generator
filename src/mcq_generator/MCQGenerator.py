@@ -14,3 +14,5 @@ import PyPDF2
 load_dotenv()
 
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+
+llm = ChatGoogleGenerativeAI(model="gemini-pro")
