@@ -62,5 +62,3 @@ generate_evaluate_chain=SequentialChain(chains=[quiz_chain, review_chain],
                                         output_variables=["quiz", "review"], 
                                         verbose=True)
 
-file_path = r'C:\Users\Manan Bedi\Documents\LLM_iNeuron\MCQ_Generator\data.txt'
-
