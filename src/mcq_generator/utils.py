@@ -25,14 +25,14 @@ def read_file(file):
     
 def get_table_data(quiz_str):
     try:
-        quiz_dict = json.loads(quiz_str)
+        quiz_dict = json.loads(quiz_str[15:])
         quiz_table_data = []
 
         for key, value in quiz_dict.items():
             mcq = value['mcq']
             options = " || ".join(
                 [
-                    f"{option} -> {option_value}" for option, option_value in value['options'].items()
+                    f"{option}. {option_value}\n" for option, option_value in value['options'].items()
                 ]
             )
 
